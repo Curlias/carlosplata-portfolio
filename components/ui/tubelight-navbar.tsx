@@ -47,11 +47,11 @@ export function NavBar({ items, className, locale }: NavBarProps) {
   return (
     <div
       className={cn(
-        "fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6",
+        "fixed bottom-6 sm:bottom-auto sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-auto",
         className,
       )}
     >
-      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center justify-center gap-1 sm:gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -62,7 +62,7 @@ export function NavBar({ items, className, locale }: NavBarProps) {
               href={item.url}
               onClick={() => setActiveTab(item.name)}
               className={cn(
-                "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                "relative cursor-pointer text-sm font-semibold px-3 sm:px-6 py-2 rounded-full transition-colors",
                 "text-foreground/80 hover:text-primary",
                 isActive && "bg-muted text-primary",
               )}
@@ -82,7 +82,7 @@ export function NavBar({ items, className, locale }: NavBarProps) {
                     damping: 30,
                   }}
                 >
-                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-1 bg-primary rounded-t-full hidden sm:block">
                     <div className="absolute w-12 h-6 bg-primary/20 rounded-full blur-md -top-2 -left-2" />
                     <div className="absolute w-8 h-6 bg-primary/20 rounded-full blur-md -top-1" />
                     <div className="absolute w-4 h-4 bg-primary/20 rounded-full blur-sm top-0 left-2" />
@@ -98,45 +98,55 @@ export function NavBar({ items, className, locale }: NavBarProps) {
           <button
             onClick={() => setShowLangMenu(!showLangMenu)}
             className={cn(
-              "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
-              "text-foreground/80 hover:text-primary flex items-center gap-2",
+              "relative cursor-pointer text-sm font-semibold px-3 sm:px-6 py-2 rounded-full transition-colors",
+              "text-foreground/80 hover:text-primary flex items-center gap-1 sm:gap-2",
             )}
           >
-            <span className="hidden md:inline">{languages[locale].flag}</span>
-            <span className="md:hidden">
+            <span className="text-base sm:text-lg">{languages[locale].flag}</span>
+            <span className="hidden sm:inline">
               <Languages size={18} strokeWidth={2.5} />
             </span>
-            <span className="hidden md:inline text-xs">{languages[locale].name}</span>
+            <span className="hidden lg:inline text-xs">{languages[locale].name}</span>
           </button>
 
           {showLangMenu && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute top-full mt-2 right-0 bg-background/95 backdrop-blur-lg border border-border rounded-lg shadow-lg overflow-hidden min-w-[120px]"
-            >
-              {locales.map((loc) => (
-                <button
-                  key={loc}
-                  onClick={() => {
-                    changeLanguage(loc)
-                    setShowLangMenu(false)
-                  }}
-                  className={cn(
-                    "w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-muted transition-colors",
-                    loc === locale && "bg-muted text-primary font-semibold"
-                  )}
-                >
-                  <span className="text-lg">{languages[loc].flag}</span>
-                  <span>{languages[loc].name}</span>
-                  {loc === locale && (
-                    <svg className="w-4 h-4 ml-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  )}
-                </button>
-              ))}
-            </motion.div>
+            <>
+              {/* Backdrop to close menu */}
+              <div 
+                className="fixed inset-0 z-40" 
+                onClick={() => setShowLangMenu(false)}
+              />
+              <motion.div
+                initial={{ opacity: 0, y: isMobile ? 10 : -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={cn(
+                  "absolute right-0 bg-background/95 backdrop-blur-lg border border-border rounded-lg shadow-lg overflow-hidden min-w-[120px] z-50",
+                  isMobile ? "bottom-full mb-2" : "top-full mt-2"
+                )}
+              >
+                {locales.map((loc) => (
+                  <button
+                    key={loc}
+                    onClick={() => {
+                      changeLanguage(loc)
+                      setShowLangMenu(false)
+                    }}
+                    className={cn(
+                      "w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-muted transition-colors",
+                      loc === locale && "bg-muted text-primary font-semibold"
+                    )}
+                  >
+                    <span className="text-lg">{languages[loc].flag}</span>
+                    <span>{languages[loc].name}</span>
+                    {loc === locale && (
+                      <svg className="w-4 h-4 ml-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </motion.div>
+            </>
           )}
         </div>
       </div>
