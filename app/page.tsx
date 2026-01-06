@@ -25,16 +25,18 @@ export default async function Home() {
   return (
     <>
       <Navigation dict={dict} locale={locale} />
-      <main className="pt-16 overflow-x-hidden">
+      <main className="overflow-x-hidden">
         <Hero dict={dict} locale={locale} />
-        <Summary dict={dict} />
-        <Skills dict={dict} locale={locale} />
-        <Experience dict={dict} locale={locale} />
-        <Projects dict={dict} locale={locale} />
-        <Certifications dict={dict} />
-        <Volunteering dict={dict} locale={locale} />
-        <Writing dict={dict} locale={locale} />
-        <Contact dict={dict} />
+        <div className="relative z-10 bg-background">
+          <Summary dict={dict} />
+          <Skills dict={dict} locale={locale} />
+          <Experience dict={dict} locale={locale} />
+          <Projects dict={dict} locale={locale} />
+          <Certifications dict={dict} />
+          <Volunteering dict={dict} locale={locale} />
+          <Writing dict={dict} locale={locale} />
+          <Contact dict={dict} />
+        </div>
       </main>
       <Footer />
     </>

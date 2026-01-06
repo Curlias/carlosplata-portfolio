@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { LucideIcon } from "lucide-react"
+import { LucideIcon, Languages } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { locales, type Locale } from "@/lib/i18n/config"
 
 interface NavItem {
   name: string
@@ -15,11 +16,13 @@ interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
+  locale: Locale
 }
 
-export function NavBar({ items, className }: NavBarProps) {
+export function NavBar({ items, className, locale }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
+  const [showLangMenu, setShowLangMenu] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,6 +33,16 @@ export function NavBar({ items, className }: NavBarProps) {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  const changeLanguage = (newLocale: Locale) => {
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`
+    window.location.reload()
+  }
+
+  const languages = {
+    en: { name: 'EN', flag: '🇺🇸' },
+    es: { name: 'ES', flag: '🇲🇽' },
+  }
 
   return (
     <div
@@ -79,6 +92,53 @@ export function NavBar({ items, className }: NavBarProps) {
             </Link>
           )
         })}
+
+        {/* Language Switcher Integrated */}
+        <div className="relative">
+          <button
+            onClick={() => setShowLangMenu(!showLangMenu)}
+            className={cn(
+              "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+              "text-foreground/80 hover:text-primary flex items-center gap-2",
+            )}
+          >
+            <span className="hidden md:inline">{languages[locale].flag}</span>
+            <span className="md:hidden">
+              <Languages size={18} strokeWidth={2.5} />
+            </span>
+            <span className="hidden md:inline text-xs">{languages[locale].name}</span>
+          </button>
+
+          {showLangMenu && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute top-full mt-2 right-0 bg-background/95 backdrop-blur-lg border border-border rounded-lg shadow-lg overflow-hidden min-w-[120px]"
+            >
+              {locales.map((loc) => (
+                <button
+                  key={loc}
+                  onClick={() => {
+                    changeLanguage(loc)
+                    setShowLangMenu(false)
+                  }}
+                  className={cn(
+                    "w-full flex items-center gap-3 px-4 py-2.5 text-sm hover:bg-muted transition-colors",
+                    loc === locale && "bg-muted text-primary font-semibold"
+                  )}
+                >
+                  <span className="text-lg">{languages[loc].flag}</span>
+                  <span>{languages[loc].name}</span>
+                  {loc === locale && (
+                    <svg className="w-4 h-4 ml-auto text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  )}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </div>
       </div>
     </div>
   )

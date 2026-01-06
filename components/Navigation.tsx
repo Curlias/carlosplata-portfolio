@@ -2,9 +2,8 @@
 
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
-import { Home, Briefcase, Award, Heart, Mail } from 'lucide-react';
+import { Home, Briefcase, Award, Heart, Mail, Languages } from 'lucide-react';
 import { NavBar } from '@/components/ui/tubelight-navbar';
-import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 
 interface NavigationProps {
@@ -23,9 +22,9 @@ export default function Navigation({ dict, locale }: NavigationProps) {
 
   return (
     <>
-      {/* Desktop Tubelight Navbar */}
+      {/* Desktop Tubelight Navbar with Language Switcher */}
       <div className="hidden md:block">
-        <NavBar items={navItems} />
+        <NavBar items={navItems} locale={locale} />
       </div>
 
       {/* Mobile Fallback Navigation */}
@@ -40,7 +39,6 @@ export default function Navigation({ dict, locale }: NavigationProps) {
             </button>
             
             <div className="flex items-center gap-2">
-              <LanguageSwitcher currentLocale={locale} />
               <MobileMenu dict={dict} locale={locale} />
             </div>
           </div>

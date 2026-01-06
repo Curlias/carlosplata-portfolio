@@ -10,9 +10,9 @@ interface HeroProps {
 
 export default function Hero({ dict, locale }: HeroProps) {
   return (
-    <section className="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative overflow-hidden">
-      {/* Shader Background */}
-      <div className="absolute inset-0 z-0">
+    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative overflow-hidden">
+      {/* Shader Background - Full Screen */}
+      <div className="fixed inset-0 z-0">
         <DotScreenShader />
       </div>
       
