@@ -24,8 +24,8 @@ export default async function Home() {
 
   return (
     <>
-      <Navigation dict={dict} />
-      <main className="pt-16">
+      <Navigation dict={dict} locale={locale} />
+      <main className="pt-16 overflow-x-hidden">
         <Hero dict={dict} locale={locale} />
         <Summary dict={dict} />
         <Skills dict={dict} locale={locale} />

@@ -1,17 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getLocale, defaultLocale } from '@/lib/i18n/config';
+import { getLocale, defaultLocale, locales } from '@/lib/i18n/config';
 
 export function middleware(request: NextRequest) {
   // Check if locale cookie exists
   const localeCookie = request.cookies.get('NEXT_LOCALE')?.value;
   
-  // If cookie exists, continue
-  if (localeCookie) {
+  // Validate cookie value
+  if (localeCookie && locales.includes(localeCookie as any)) {
+    // Valid cookie exists, continue
     return NextResponse.next();
   }
 
-  // Auto-detect language from Accept-Language header
+  // No valid cookie - auto-detect language from Accept-Language header
   const acceptLanguage = request.headers.get('accept-language') || undefined;
   const detectedLocale = getLocale(acceptLanguage);
 
@@ -20,6 +21,7 @@ export function middleware(request: NextRequest) {
   response.cookies.set('NEXT_LOCALE', detectedLocale, {
     maxAge: 60 * 60 * 24 * 365, // 1 year
     path: '/',
+    sameSite: 'lax',
   });
 
   return response;

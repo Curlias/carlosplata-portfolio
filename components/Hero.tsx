@@ -9,15 +9,15 @@ interface HeroProps {
 
 export default function Hero({ dict, locale }: HeroProps) {
   return (
-    <section className="min-h-[60vh] flex items-center justify-center px-6 py-20">
-      <div className="max-w-4xl w-full">
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4">
+    <section className="min-h-[70vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-4xl w-full animate-fade-in">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
           {profile.name}
         </h1>
-        <h2 className="text-2xl md:text-3xl text-gray-700 mb-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl text-gray-700 mb-4 sm:mb-6 leading-relaxed">
           {dict.hero.title}
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed">
           {dict.hero.subtitle}
         </p>
       </div>
