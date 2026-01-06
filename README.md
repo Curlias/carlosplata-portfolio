@@ -2,6 +2,10 @@
 
 Professional portfolio website for Carlos Alberto Plata Monroy, Network & Telecommunications Engineer.
 
+**Live Site**: [Deploy to Vercel](https://vercel.com/new/clone?repository-url=https://github.com/Curlias/carlosplata-portfolio)
+
+**Repository**: [github.com/Curlias/carlosplata-portfolio](https://github.com/Curlias/carlosplata-portfolio)
+
 ## 🎯 Overview
 
 This is a single-page professional portfolio designed for technical recruiters and long-term personal branding. The site showcases real ISP/production network experience, certifications, and technical capabilities.
@@ -150,6 +154,14 @@ All styles use Tailwind CSS utility classes. Global styles are in [app/globals.c
 
 ### Vercel (Recommended)
 
+#### Deploy via GitHub (Easiest)
+1. Go to [vercel.com](https://vercel.com)
+2. Click "New Project"
+3. Import repository: `carlosplata-portfolio`
+4. Vercel auto-detects Next.js configuration
+5. Click "Deploy"
+
+#### Deploy via CLI
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -157,6 +169,8 @@ npm i -g vercel
 # Deploy
 vercel
 ```
+
+**Repository**: [github.com/Curlias/carlosplata-portfolio](https://github.com/Curlias/carlosplata-portfolio)
 
 ### Other Platforms
 The site is a standard Next.js app and can be deployed to:
