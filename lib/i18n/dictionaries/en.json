@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "volunteering": "Volunteering",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Network & Telecommunications Engineer",
+    "subtitle": "Focused on ISP operations, network monitoring, and infrastructure reliability"
+  },
+  "summary": {
+    "title": "Professional Summary",
+    "content": "Network and Telecommunications Engineer with hands-on experience in ISP environments, network monitoring, incident management, and infrastructure troubleshooting. Focused on reliability, observability, and real-world production networks."
+  },
+  "skills": {
+    "title": "Core Skills & Focus Areas",
+    "categories": {
+      "networking": "Networking Protocols & Fundamentals",
+      "monitoring": "Monitoring & Diagnostics",
+      "infrastructure": "ISP Infrastructure & Tooling"
+    }
+  },
+  "experience": {
+    "title": "Work Experience",
+    "present": "Present"
+  },
+  "projects": {
+    "title": "Projects",
+    "viewProject": "View Project"
+  },
+  "certifications": {
+    "title": "Certifications"
+  },
+  "volunteering": {
+    "title": "Volunteering"
+  },
+  "writing": {
+    "title": "Writing & Knowledge Sharing",
+    "subtitle": "Technical articles on troubleshooting, monitoring, and networking concepts"
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Email",
+    "location": "Location",
+    "linkedin": "LinkedIn"
+  }
+}

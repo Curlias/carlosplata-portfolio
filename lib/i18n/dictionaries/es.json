@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "about": "Acerca",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "certifications": "Certificaciones",
+    "volunteering": "Voluntariado",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Ingeniero en Redes y Telecomunicaciones",
+    "subtitle": "Enfocado en operaciones ISP, monitoreo de redes y confiabilidad de infraestructura"
+  },
+  "summary": {
+    "title": "Resumen Profesional",
+    "content": "Ingeniero en Redes y Telecomunicaciones con experiencia práctica en entornos ISP, monitoreo de redes, gestión de incidentes y resolución de problemas de infraestructura. Enfocado en confiabilidad, observabilidad y redes de producción reales."
+  },
+  "skills": {
+    "title": "Habilidades Principales y Áreas de Enfoque",
+    "categories": {
+      "networking": "Protocolos de Red y Fundamentos",
+      "monitoring": "Monitoreo y Diagnóstico",
+      "infrastructure": "Infraestructura ISP y Herramientas"
+    }
+  },
+  "experience": {
+    "title": "Experiencia Laboral",
+    "present": "Presente"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "viewProject": "Ver Proyecto"
+  },
+  "certifications": {
+    "title": "Certificaciones"
+  },
+  "volunteering": {
+    "title": "Voluntariado"
+  },
+  "writing": {
+    "title": "Escritura y Compartir Conocimiento",
+    "subtitle": "Artículos técnicos sobre resolución de problemas, monitoreo y conceptos de redes"
+  },
+  "contact": {
+    "title": "Contacto",
+    "email": "Correo Electrónico",
+    "location": "Ubicación",
+    "linkedin": "LinkedIn"
+  }
+}
